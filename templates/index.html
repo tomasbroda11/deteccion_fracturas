@@ -6,60 +6,120 @@
     <title>Detección de Fracturas</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            background-image: url("/static/gal1.jpg");
+            background-size: cover;
+            background-position: center 20%;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            color: #fff;
+            text-align: center;
         }
 
         .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 300px;
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 600px; /* Ancho fijo */
         }
 
         h1 {
-            color: #4CAF50;
-            font-size: 24px;
-            margin-bottom: 20px;
+            color: #345e84;
+            font-size: 28px;
+            margin-bottom: 15px;
+            text-transform: uppercase; /* Letras mayúsculas */
+            letter-spacing: 1px; /* Espaciado entre letras */
+        }
+
+        h3 {
+            color: #555;
+            margin-bottom: 25px;
+            font-weight: normal; /* Cambia el peso de la fuente */
+        }
+
+        p {
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+            line-height: 1.6;
+            text-align: left; /* Alinear texto a la izquierda */
+        }
+
+        ul {
+            list-style-type: none; /* Cambia el estilo de la lista */
+            padding-left: 20px; /* Espaciado a la izquierda */
+            margin: 15px 0; /* Margen superior e inferior */
+        }
+
+        li {
+            margin-bottom: 10px; /* Espaciado entre los ítems de la lista */
+            color: #555;
+            text-align: left;
+        }
+
+        strong {
+            color: #345e84; /* Color para texto en negrita */
         }
 
         form {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px; /* Espacio entre los elementos del formulario */
+            margin-top: 20px; /* Espaciado superior */
         }
 
         input[type="file"] {
             padding: 10px;
-            border: 2px solid #4CAF50;
+            border: 2px solid #345e84;
             border-radius: 5px;
+            font-size: 16px; /* Aumentar el tamaño de fuente */
+            color: #666;
         }
 
         input[type="submit"] {
-            background-color: #4CAF50;
+            background-color: #345e84;
             color: white;
-            padding: 10px;
+            padding: 12px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px; /* Aumentar el tamaño de fuente */
+            transition: background-color 0.3s ease; /* Transición suave */
         }
 
         input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #2c4d66; /* Color de fondo al pasar el mouse */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%; /* Hacer que el contenedor sea más pequeño en pantallas pequeñas */
+            }
+
+            h1 {
+                font-size: 24px; /* Reducir el tamaño del título en pantallas pequeñas */
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Detección de fracturas</h1>
+        <h1>Detección de Fracturas</h1>
+        <h3>Sube una radiografía para detectar posibles fracturas!</h3>
+        <p>
+            <strong>Reglas:</strong>
+        </p>
+        <ul>
+            <li><strong>Formato:</strong> PNG o JPEG</li>
+            <li><strong>Tamaño mínimo:</strong> 224px de ancho y alto</li>
+            <li><strong>Solo imágenes:</strong> rayos X sin colores</li>
+            <li><strong>Sin objetos adicionales:</strong> en la imagen</li>
+        </ul>
         <form action="/upload" method="POST" enctype="multipart/form-data">
             <input type="file" name="file" accept="image/*" required>
             <input type="submit" value="Subir y procesar">
