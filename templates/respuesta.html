@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultado del Análisis de Fractura</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("/static/gal1.jpg");
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+    }
+    
+    .result-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      text-align: center;
+    }
+    
+    .result-card h1 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    .fracture-status {
+      font-size: 1.4rem;
+      font-weight: bold;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    
+    .fracture-status.detected {
+      background-color: #e74c3c;
+    }
+    
+    .fracture-status.not-detected {
+      background-color: #2ecc71;
+    }
+    
+    .fracture-probability p {
+      font-size: 1.2rem;
+      color: #333;
+    }
+    
+    .fracture-probability strong {
+      font-size: 1.4rem;
+      color: #3498db;
+    }
+    .back-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #3498db;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="result-card">
+      <h1>Resultado del Análisis de Fractura</h1>
+      <div class="fracture-status {{ 'detected' if fracture_detected else 'not-detected' }}">
+        {% if fracture_detected %}
+          <span>Fractura Detectada</span>
+        {% else %}
+          <span>No se detectó fractura</span>
+        {% endif %}
+      </div>
+      <div class="fracture-probability">
+        <p>Probabilidad de Fractura: <strong>{{ (fracture_probability * 100) | round(2) }}%</strong></p>
+      </div>
+        <div>
+            <a href="/" class="back-button">Volver Atrás</a>
+        </div>
+    </div>
+  </div>
+</body>
+</html>

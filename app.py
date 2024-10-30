@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 import os
-
+from model import fractureElbow
 app = Flask(__name__)
 
 # Configuración para almacenar archivos subidos
@@ -27,13 +27,17 @@ def upload_image():
         filename = secure_filename(file.filename)
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(filepath)
-        
-        # Aquí puedes invocar el modelo de IA y pasarle la imagen subida para procesarla
-        # result = process_image(filepath) # Esta función la implementarás en model.py
 
-        return f"Imagen subida exitosamente. Procesando radiografía: {filename}"
+        respuesta = fractureElbow(filepath)
+
+        return render_template(
+            'respuesta.html', 
+            fracture_probability=respuesta['fracture_probability'], 
+            fracture_detected=respuesta['fracture_detected']
+        )
 
     return redirect(request.url)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
