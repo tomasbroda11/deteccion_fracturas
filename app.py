@@ -17,6 +17,10 @@ def allowed_file(filename):
 def home():
     return render_template('index.html')
 
+@app.route('/acerca-de')
+def about():
+    return render_template('about.html')
+
 @app.route('/upload', methods=['POST'])
 def upload_image():
     if 'file' not in request.files:

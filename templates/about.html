@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Acerca de - Sistema de Detección de Fracturas</title>
+	<link rel="icon" href="{{ url_for('static', filename='fracture_icon.webp') }}" type="image/x-icon">
+	<style>
+    	* {
+        	margin: 0;
+        	padding: 0;
+        	box-sizing: border-box;
+    	}
+    
+    	body {
+        	font-family: Arial, sans-serif;
+        	line-height: 1.6;
+        	margin: 0;
+        	padding: 0;
+        	background-color: #f4f4f4;
+        	padding-top: 60px; /* Espacio para el navbar fijo */
+    	}
+    
+    	.navbar {
+        	background-color: #345e84; /* Fondo semi-transparente */
+        	padding: 10px 20px;
+        	position: fixed; /* Fijar la barra de navegación */
+        	top: 0;
+        	left: 0;
+        	right: 0;
+        	display: flex; /* Usar flexbox para alinear elementos */
+        	align-items: center; /* Centrar verticalmente */
+        	z-index: 1000; /* Asegurarse de que esté sobre otros elementos */
+    	}
+
+    	.navbar img {
+        	width: 50px; /* Ancho del logo */
+        	height: auto; /* Mantener la proporción */
+        	margin-right: 20px; /* Espaciado a la derecha del logo */
+    	}
+
+    	.navbar a {
+        	color: #ffffff; /* Color del texto de los enlaces */
+        	text-decoration: none; /* Sin subrayado */
+        	margin-right: 20px; /* Espacio entre los enlaces */
+        	font-size: 18px; /* Tamaño de la fuente */
+    	}
+
+    	.container {
+        	max-width: 800px;
+        	margin: auto;
+        	padding: 20px;
+    	}
+    
+    	h1 {
+        	color: #333;
+        	text-align: center;
+    	}
+    
+    	p, li {
+        	color: #555;
+    	}
+    
+    	ul {
+        	margin-top: 10px;
+    	}
+    
+    	.btn {
+        	display: inline-block;
+        	background-color: #4CAF50;
+        	color: white;
+        	padding: 10px 20px;
+        	text-align: center;
+        	text-decoration: none;
+        	border-radius: 5px;
+        	margin-top: 20px;
+        	display: block;
+        	text-align: center;
+        	max-width: 200px;
+        	margin: 20px auto;
+    	}
+    
+    	footer {
+        	text-align: center;
+        	padding: 10px;
+        	background: #333;
+        	color: white;
+        	position: fixed;
+        	width: 100%;
+        	bottom: 0;
+    	}
+	</style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/">
+        <img src="{{ url_for('static', filename='fracture_icon.webp') }}" alt="Logo">
+    </a>
+    <a href="/">Inicio</a>
+    <a href="/acerca-de">Acerca de</a>
+</div>
+
+<div class="container">
+	<h1>Acerca de Nosotros</h1>
+	<p>
+    	Bienvenido al sistema de detección de fracturas mediante inteligencia artificial. Nuestro objetivo es
+    	proporcionar una herramienta de apoyo para el diagnóstico preliminar de fracturas en radiografías, como las
+    	del codo o el hombro, mediante el uso de modelos de aprendizaje profundo.
+	</p>
+
+	<h2>Objetivo del Sistema</h2>
+	<p>
+    	Este sistema está diseñado para facilitar a los profesionales de la salud la identificación rápida de fracturas
+    	en radiografías, permitiéndoles tomar decisiones informadas de manera más ágil. Es particularmente útil en
+    	situaciones de urgencia o en áreas donde el acceso a especialistas es limitado.
+	</p>
+
+	<h2>Cómo Funciona</h2>
+	<ul>
+    	<li><strong>Recepción de la Imagen:</strong> El usuario sube una radiografía a la plataforma para análisis.</li>
+    	<li><strong>Almacenamiento y Procesamiento:</strong> La imagen es guardada y enviada al modelo de detección en
+        	nuestro sistema.
+    	</li>
+    	<li><strong>Predicción:</strong> Un modelo de inteligencia artificial entrenado analiza la imagen y devuelve
+        	la probabilidad de fractura, ayudando a determinar si existe o no una fractura.
+    	</li>
+	</ul>
+
+	<h2>Tecnologías Utilizadas</h2>
+	<p>
+    	Este sistema se basa en tecnologías de inteligencia artificial, utilizando <strong>TensorFlow</strong> y
+    	<strong>Keras</strong> para procesar las imágenes y realizar la detección. El backend se ha implementado en
+    	<strong>Flask</strong>, un framework ligero que facilita la gestión de archivos y el procesamiento de
+    	peticiones de manera eficiente.
+	</p>
+
+	<h2>Beneficios</h2>
+	<p>
+    	Con este sistema, buscamos contribuir a la eficiencia y precisión en el diagnóstico médico, mejorando el
+    	acceso a herramientas de análisis y ofreciendo un apoyo importante en la toma de decisiones en el área de
+    	radiología.
+	</p>
+
+	<a href="/" class="btn">Volver al Inicio</a>
+</div>
+
+<footer>
+	&copy; 2024 Sistema de Detección de Fracturas por IA. Todos los derechos reservados.
+</footer>
+
+</body>
+</html>
