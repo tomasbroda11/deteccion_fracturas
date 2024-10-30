@@ -29,14 +29,32 @@ def upload_image():
         file.save(filepath)
 
         respuesta = fractureElbow(filepath)
-        os.remove(filepath)
-        return render_template(
-            'respuesta.html', 
-            fracture_probability=respuesta['fracture_probability'], 
-            fracture_detected=respuesta['fracture_detected']
-        )
+
+        return render_template('respuesta.html', fracture_probability=respuesta['fracture_probability'], 
+                       fracture_detected=respuesta['fracture_detected'], 
+                       filename=filename)
+
 
     return redirect(request.url)
+
+@app.route('/vaciar', methods=['POST'])
+def vaciar():
+    UPLOAD_FOLDER = 'static/uploads/'
+    vaciar_carpeta(UPLOAD_FOLDER)  # Llama a la función para vaciar la carpeta
+    return redirect('/')  # Redirige a la página de carga de imágenes
+
+
+def vaciar_carpeta(upload_folder):
+    if os.path.exists(upload_folder):
+        for archivo in os.listdir(upload_folder):
+            archivo_path = os.path.join(upload_folder, archivo)
+            try:
+                if os.path.isfile(archivo_path):
+                    os.remove(archivo_path)
+            except Exception as e:
+                print(f"Error al eliminar {archivo_path}: {e}")
+    else:
+        print(f"La carpeta {upload_folder} no existe.")
 
 
 if __name__ == '__main__':
