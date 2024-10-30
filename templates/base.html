@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detección de Fracturas</title>
+    <title>{% block title %}Tu Título Aquí{% endblock %}</title>
     <link rel="icon" href="{{ url_for('static', filename='fracture_icon.webp') }}" type="image/x-icon">
     <style>
         body {
@@ -13,13 +13,10 @@
             background-position: center 20%;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             color: #fff;
             text-align: center;
         }
+
         .navbar {
             background-color: #345e84; /* Fondo semi-transparente */
             padding: 10px 20px;
@@ -44,12 +41,14 @@
             margin-right: 20px; /* Espacio entre los enlaces */
             font-size: 18px; /* Tamaño de la fuente */
         }
+
         .container {
             background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             width: 600px; /* Ancho fijo */
+            margin-top: 80px; /* Espacio para la barra de navegación */
         }
 
         h1 {
@@ -128,6 +127,23 @@
             font-size: 16px;
         }
 
+        /* Estilo para el botón de información */
+        .info-button {
+            background-color: #28a745; /* Color verde para el botón */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .info-button:hover {
+            background-color: #218838; /* Color más oscuro al pasar el mouse */
+        }
+
         @media (max-width: 768px) {
             .container {
                 width: 90%; /* Hacer que el contenedor sea más pequeño en pantallas pequeñas */
@@ -147,38 +163,9 @@
         <a href="/">Inicio</a>
         <a href="/sobre">Acerca de</a>
     </div>
-    <div class="container">
-        <h1>Detección de Fracturas</h1>
-        <h3>Sube una radiografía para detectar posibles fracturas!</h3>
-        <p>
-            <strong>Reglas:</strong>
-        </p>
-        <ul>
-            <li><strong>Formato:</strong> PNG o JPEG</li>
-            <li><strong>Solo imágenes:</strong> rayos X sin colores</li>
-            <li><strong>Sin objetos adicionales:</strong> en la imagen</li>
-        </ul>
-        <form action="/upload" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
-            <input type="file" name="file" accept=".png, .jpg, .jpeg" required>
-            <a class="error-message" id="error-message">Tipo de archivo no permitido. Por favor, sube una imagen PNG, JPG o JPEG.</a>
-            <input type="submit" value="Subir y procesar">
-        </form>
-    </div>
 
-    <script>
-        function validateForm() {
-            const fileInput = document.querySelector('input[type="file"]');
-            const errorMessage = document.getElementById('error-message');
-            const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+    {% block content %}
 
-            if (!allowedExtensions.exec(fileInput.value)) {
-                errorMessage.style.display = 'block'; // Mostrar el mensaje de error
-                return false; // Prevenir el envío del formulario
-            } else {
-                errorMessage.style.display = 'none'; // Ocultar el mensaje de error
-            }
-            return true; // Permitir el envío del formulario
-        }
-    </script>
+    {% endblock %}
 </body>
 </html>

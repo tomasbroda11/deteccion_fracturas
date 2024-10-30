@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resultado del Análisis de Fractura</title>
+  <link rel="icon" href="{{ url_for('static', filename='fracture_icon.webp') }}" type="image/x-icon">
   <style>
     * {
       margin: 0;
@@ -13,12 +14,40 @@
     
     body {
       font-family: Arial, sans-serif;
-      background-image: url("/static/gal1.jpg");
+      background-image: url("/static/medica.avif");
+      background-size: cover;
+      background-position: center 20%;
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
+      align-items: flex-start; /* Cambiado a flex-start para permitir el margen superior */
+      min-height: 100vh; /* Cambiado a min-height para permitir el crecimiento del contenido */
+      padding-top: 80px; /* Espacio para la navbar */
       margin: 0;
+    }
+
+    .navbar {
+        background-color: #345e84; /* Fondo semi-transparente */
+        padding: 10px 20px;
+        position: fixed; /* Fijar la barra de navegación */
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex; /* Usar flexbox para alinear elementos */
+        align-items: center; /* Centrar verticalmente */
+        z-index: 1000; /* Asegurarse de que esté sobre otros elementos */
+    }
+
+    .navbar img {
+        width: 50px; /* Ancho del logo */
+        height: auto; /* Mantener la proporción */
+        margin-right: 20px; /* Espaciado a la derecha del logo */
+    }
+
+    .navbar a {
+        color: #ffffff; /* Color del texto de los enlaces */
+        text-decoration: none; /* Sin subrayado */
+        margin-right: 20px; /* Espacio entre los enlaces */
+        font-size: 18px; /* Tamaño de la fuente */
     }
     
     .container {
@@ -36,9 +65,11 @@
     }
     
     .result-card h1 {
-      font-size: 1.8rem;
-      color: #333;
-      margin-bottom: 20px;
+        color: #345e84;
+        font-size: 28px;
+        margin-bottom: 15px;
+        text-transform: uppercase; 
+        letter-spacing: 1px; /* Espaciado entre letras */
     }
 
     .fracture-status {
@@ -65,7 +96,7 @@
     
     .fracture-probability strong {
       font-size: 1.4rem;
-      color: #3498db;
+      color: #345e84;
     }
 
     .back-button {
@@ -74,7 +105,7 @@
       margin-top: 20px;
       font-size: 1rem;
       color: #fff;
-      background-color: #3498db;
+      background-color: #345e84;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -96,6 +127,13 @@
   </style>
 </head>
 <body>
+    <div class="navbar">
+        <a href="/">
+            <img src="{{ url_for('static', filename='fracture_icon.webp') }}" alt="Logo">
+        </a>
+        <a href="/">Inicio</a>
+        <a href="/sobre">Acerca de</a>
+    </div>
   <div class="container">
     <div class="result-card">
       <h1>Resultado del Análisis de Fractura</h1>

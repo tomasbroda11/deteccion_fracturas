@@ -35,7 +35,7 @@ def upload_image():
                        filename=filename)
 
 
-    return redirect(request.url)
+    return "Tipo de archivo no permitido", 400 
 
 @app.route('/vaciar', methods=['POST'])
 def vaciar():
