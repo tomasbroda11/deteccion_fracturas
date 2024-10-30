@@ -29,7 +29,7 @@ def upload_image():
         file.save(filepath)
 
         respuesta = fractureElbow(filepath)
-
+        os.remove(filepath)
         return render_template(
             'respuesta.html', 
             fracture_probability=respuesta['fracture_probability'], 
